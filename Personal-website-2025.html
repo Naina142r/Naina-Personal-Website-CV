@@ -1006,29 +1006,15 @@
                 </div>
                 <div class="certificate-card" data-certificate="5">
                     <div class="certificate-image" style="background-color: #33691e;">
-                        <i class="fas fa-robot" style="font-size: 3rem;"></i>
+                        <i class="fas fa-database" style="font-size: 3rem;"></i>
                     </div>
                     <div class="certificate-content">
-                        <h3>AI-Powered Marketer</h3>
-                        <p>Semrush</p>
-                        <div class="certificate-tags">
-                            <span class="certificate-tag">AI</span>
-                            <span class="certificate-tag">Marketing</span>
-                            <span class="certificate-tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="certificate-card" data-certificate="6">
-                    <div class="certificate-image" style="background-color: #4a148c;">
-                        <i class="fab fa-python" style="font-size: 3rem;"></i>
-                    </div>
-                    <div class="certificate-content">
-                        <h3>Programming Foundations with Python</h3>
-                        <p>CodeSignal</p>
+                        <h3>Python 101 for Data Science</h3>
+                        <p>Cognitive Class</p>
                         <div class="certificate-tags">
                             <span class="certificate-tag">Python</span>
-                            <span class="certificate-tag">Programming</span>
-                            <span class="certificate-tag">Fundamentals</span>
+                            <span class="certificate-tag">Data Science</span>
+                            <span class="certificate-tag">IBM</span>
                         </div>
                     </div>
                 </div>
@@ -1158,7 +1144,7 @@
         const closeModal = document.querySelector('.close-modal');
         const certificateCards = document.querySelectorAll('.certificate-card');
         
-        // Certificate data - UPDATE THESE IMAGE URLs WITH YOUR GITHUB IMAGE URLs
+        // Certificate data - Using your GitHub repository images
         const certificates = {
             1: {
                 title: "DELF B2 Examination",
@@ -1166,8 +1152,8 @@
                 date: "2024",
                 description: "Diplôme d'Études en Langue Française (DELF) B2 level certification, demonstrating intermediate-advanced proficiency in French language.",
                 skills: ["French Language", "B2 Level", "Language Proficiency"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/delf-b2-certificate.jpg"
+                // Using placeholder since this image doesn't exist in your repo yet
+                image: ""
             },
             2: {
                 title: "Chinese GCSE Certificate",
@@ -1175,8 +1161,8 @@
                 date: "2024",
                 description: "General Certificate of Secondary Education (GCSE) in Chinese Language, achieving Level 8 proficiency.",
                 skills: ["Chinese Language", "GCSE", "Level 8"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/chinese-gcse-certificate.jpg"
+                // Using placeholder since this image doesn't exist in your repo yet
+                image: ""
             },
             3: {
                 title: "Speech Festival First Place",
@@ -1184,35 +1170,26 @@
                 date: "2024",
                 description: "First place award in Solo Verse Speaking category at the 76th Hong Kong Schools Speech Festival.",
                 skills: ["Public Speaking", "Speech Competition", "First Place"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/speech-festival-certificate.jpg"
+                // Using placeholder since this image doesn't exist in your repo yet
+                image: ""
             },
             4: {
-                title: "Taekwondo Black Belt Promotion",
+                title: "Taekwondo Black Belt",
                 issuer: "Taekwondo Association",
                 date: "2023",
                 description: "Certificate of promotion to Black Belt in Taekwondo, recognizing advanced skill and discipline in the martial art.",
                 skills: ["Taekwondo", "Martial Arts", "Black Belt", "Discipline"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/taekwondo-certificate.jpg"
+                // Using your actual GitHub image
+                image: "https://raw.githubusercontent.com/Naina142r/Naina-Personal-Website-CV/main/taekwondo%20cert.jpg"
             },
             5: {
-                title: "AI-Powered Marketer",
-                issuer: "Semrush",
-                date: "2024",
-                description: "Certification in leveraging AI tools for marketing automation, content generation, and data analysis.",
-                skills: ["AI Tools", "Marketing Automation", "Content Generation", "Data Analysis"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/ai-marketer-certificate.jpg"
-            },
-            6: {
-                title: "Programming Foundations with Python",
-                issuer: "CodeSignal",
-                date: "2023",
-                description: "Fundamental programming concepts using Python including variables, loops, functions, and basic data structures.",
-                skills: ["Python", "Problem Solving", "Algorithms", "Data Structures"],
-                // Replace with your GitHub image URL
-                image: "https://raw.githubusercontent.com/yourusername/your-repo/main/images/python-certificate.jpg"
+                title: "Python 101 for Data Science",
+                issuer: "Cognitive Class / IBM",
+                date: "September 5, 2025",
+                description: "Introduction to data science concepts using Python, including data manipulation, visualization, and basic machine learning.",
+                skills: ["Data Science", "Python", "Data Visualization", "Machine Learning"],
+                // Using your actual GitHub image
+                image: "https://raw.githubusercontent.com/Naina142r/Naina-Personal-Website-CV/main/Python%20101%20for%20Data%20Science.png"
             }
         };
         
@@ -1225,10 +1202,22 @@
                 document.getElementById('modalTitle').textContent = certData.title;
                 
                 const detailsContainer = document.getElementById('certificateDetails');
-                detailsContainer.innerHTML = `
-                    <div class="certificate-preview-container">
+                
+                // Check if image exists
+                let imageHtml = '';
+                if (certData.image) {
+                    imageHtml = `<div class="certificate-preview-container">
                         <img src="${certData.image}" alt="${certData.title}" class="certificate-preview">
-                    </div>
+                    </div>`;
+                } else {
+                    imageHtml = `<div class="certificate-preview-container" style="text-align: center; padding: 40px;">
+                        <i class="fas fa-image" style="font-size: 3rem; color: var(--light-gray);"></i>
+                        <p style="margin-top: 15px; color: var(--text-light);">Certificate image not available</p>
+                    </div>`;
+                }
+                
+                detailsContainer.innerHTML = `
+                    ${imageHtml}
                     <div class="certificate-info">
                         <div class="info-item">
                             <span class="info-label">Issued by:</span>
